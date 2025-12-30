@@ -23,6 +23,11 @@ class PatientData(BaseModel):
         if domain_name not in valid_domains:
             raise ValueError(f'Not a Valid email domain')
         return value
+    
+    @field_validator('name')
+    @classmethod
+    def validator_name(cls, value):
+        return value.upper()
 
 
 
